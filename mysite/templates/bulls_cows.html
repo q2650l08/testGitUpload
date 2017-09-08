@@ -1,0 +1,76 @@
+<!-- bulls_cows.html -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bulls & Cows</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            
+            table, th, td {
+                text-align:center; 
+                vertical-align:middle;
+                border: 1px solid black;
+            }
+
+            #container{
+                width: 100%;
+                text-align:center; 
+            }
+
+        </style>
+    </head>
+    <body>
+       
+ 
+
+
+
+
+
+        <div id="container">
+                <form action="." method="post">
+                    {% csrf_token %}
+                    <label>猜 1 ~ 99 
+                    </label>
+                    <input id="input_number" name="input_number"  type="text" placeholder="猜啊!幹!">
+                    <input type="submit" value="Submit">
+                </form>
+        </div>
+
+        <br>  
+        <table>
+            <tr>
+                <td>
+                    No
+                </td>   
+                <td>
+                    Number                        
+                </td> 
+                <td>
+                    Result                        
+                </td>    
+            </tr>
+                {% for item in myList %}
+                <tr>
+                    <td>
+                         {{ forloop.counter }}
+                    </td> 
+                     <td>
+                    {{ item.number }}
+                    </td> 
+                     <td>
+                            {% if item.result %}
+                                 中 
+                            {% else %}
+                                沒中 
+                            {% endif %}
+                     </td> 
+                 </tr>
+                {% endfor %}
+        </table>
+    </body>
+</html>
